@@ -47,7 +47,7 @@ pipeline {
             }
             steps {
                 withAWS(credentials: 'aws-credentials', region: env.AWS_REGION) {
-                 dir('icin-user-ui') {
+                 dir('icin-backend-api/icin_bank_final') {
                     sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=$SUBNET_ID -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=$AWS_REGION'
                     }
                 }
