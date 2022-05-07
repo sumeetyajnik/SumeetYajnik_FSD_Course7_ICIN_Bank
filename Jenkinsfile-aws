@@ -53,6 +53,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('Build - icin-user-ui') {
           steps {
             dir('icin-user-ui') {
@@ -91,4 +92,5 @@ pipeline {
             }
         }
     }
+    */
 }
