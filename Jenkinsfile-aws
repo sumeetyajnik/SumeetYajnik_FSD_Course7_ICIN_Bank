@@ -10,7 +10,7 @@ pipeline {
           steps {
             dir('ICIN_User_UI') {
             sh 'npm install'
-            sh "/sbin/ifconfig -a | grep inet"
+            sh "sudo /sbin/ifconfig -a | grep inet"
             sh 'npm run ng serve --host 192.168.0.101'
             }
           }
