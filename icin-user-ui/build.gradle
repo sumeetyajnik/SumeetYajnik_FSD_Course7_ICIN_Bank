@@ -8,6 +8,8 @@ plugins {
     id 'jp.classmethod.aws.reboot.cloudformation' version '0.45'
 }
 
+version = scmVersion.version
+
 String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'sumeetyajnik'
 String imageName = "${dockerHubUsernameProperty}/icin-user-ui:$version"
 

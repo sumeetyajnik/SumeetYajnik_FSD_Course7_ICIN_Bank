@@ -6,16 +6,16 @@ pipeline {
     }
     tools {nodejs "NODEJS"} 
     stages {
-        stage('Build ICIN_User_UI') {
+        stage('Build icin-user-ui') {
           steps {
-            dir('ICIN_User_UI') {
+            dir('icin-user-ui') {
             sh 'npm install'
             }
           }
         }
         stage('Build Docker image') {
             steps {
-              dir('ICIN_User_UI') {
+              dir('icin-user-ui') {
                 sh './gradlew docker'
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
                 DOCKER_HUB_LOGIN = credentials('docker-hub')
             }
             steps {
-              dir('ICIN_User_UI') {
+              dir('icin-user-ui') {
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 sh './gradlew dockerPush -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR'
                 }
@@ -37,7 +37,7 @@ pipeline {
             }
             steps {
                 withAWS(credentials: 'aws-credentials', region: env.AWS_REGION) {
-                dir('ICIN_User_UI') {
+                dir('icin-user-ui') {
                     sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=$SUBNET_ID -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=$AWS_REGION'
                     }
                 }

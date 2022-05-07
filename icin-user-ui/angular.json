@@ -97,18 +97,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ICIN-frontend:serve"
+            "devServerTarget": "icin-user-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ICIN-frontend:serve:production"
+              "devServerTarget": "icin-user-ui:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ICIN-frontend",
+  "defaultProject": "icin-user-ui",
   "cli": {
     "analytics": "691c6296-1d8b-41fb-ad5e-740d2f55c76a"
   }
