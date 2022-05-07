@@ -6,10 +6,9 @@ pipeline {
     }
     stages {
         stage('Build') {
-            dir('ICIN_User_UI') {
-                sh 'npm install'
-                sh 'ng serve'
-            }
+            sh 'cd ICIN_User_UI'
+            sh 'npm install'
+            sh 'ng serve'
         }
         stage('Test') {
             steps {
