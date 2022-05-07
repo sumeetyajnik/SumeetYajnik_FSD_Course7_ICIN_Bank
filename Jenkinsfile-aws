@@ -7,8 +7,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-            dir('SumeetYajnik_FSD_Course7_ICIN_Bank/ICIN_Backend_DB') {
-                sh 'mvn -B -DskipTests clean package'
+            dir('ICIN_User_UI') {
+                sh 'npm install'
+                sh 'ng serve'
             }
         }
         stage('Test') {
