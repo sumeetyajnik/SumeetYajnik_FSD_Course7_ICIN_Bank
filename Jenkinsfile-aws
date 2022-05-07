@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
           steps {
             dir('ICIN_User_UI') {
+            sh 'npm install'
             sh 'npm run ng serve'
             }
           }
