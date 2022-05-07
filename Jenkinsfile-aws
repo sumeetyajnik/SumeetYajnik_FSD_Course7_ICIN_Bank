@@ -7,9 +7,11 @@ pipeline {
     stages {
         stage("Install") {
             steps {
-                sh "npm install"
+            nodejs('NODEJS') {
+                npm install
+                }
             }
-        }
+            }
         stage('Build') {
           steps {
             sh 'cd ICIN_User_UI'
