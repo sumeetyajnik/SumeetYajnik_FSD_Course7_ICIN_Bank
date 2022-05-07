@@ -4,17 +4,12 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    tools {nodejs "NODEJS"} 
     stages {
-        stage("Install") {
-            steps {
-            nodejs('NODEJS') {
-                npm install
-                }
-            }
-            }
         stage('Build') {
           steps {
             sh 'cd ICIN_User_UI'
+            sh 'npm install'
             sh 'ng serve'
           }
         }
