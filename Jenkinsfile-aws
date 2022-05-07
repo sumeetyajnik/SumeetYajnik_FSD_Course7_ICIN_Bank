@@ -15,7 +15,9 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
+              dir('ICIN_User_UI') {
                 sh './gradlew docker'
+                }
             }
         }
         stage('Push Docker image') {
