@@ -9,10 +9,11 @@ plugins {
 }
 
 String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'sumeetyajnik'
-String imageName = "${dockerHubUsernameProperty}/sy-fsd-spring-boot-api:$version"
+String imageName = "${dockerHubUsernameProperty}/icin-user-ui:$version"
 
-docker build . -t sumeetyajnik/icin-user-ui
-
+docker {
+    name imageName
+}
 
 dockerRun {
     name project.name
