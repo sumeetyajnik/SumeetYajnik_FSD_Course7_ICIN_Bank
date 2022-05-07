@@ -22,6 +22,7 @@ pipeline {
                  sh 'mvn -B -DskipTests clean package'
             }
         }
+        }
         stage('Build Docker image - icin-backend-api') {
             steps {
              dir('icin-user-ui') {
