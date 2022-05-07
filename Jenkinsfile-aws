@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
           steps {
             sh 'cd ICIN_User_UI'
-            sh 'ng serve'
+            sh 'npm run ng serve'
           }
         }
         stage('Test') {
