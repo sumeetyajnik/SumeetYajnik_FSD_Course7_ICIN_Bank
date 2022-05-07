@@ -4,23 +4,69 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
-    tools {nodejs "NODEJS"} 
+    tools {
+        nodejs "NODEJS"
+        maven "MAVEN"
+        jdk "JDK"
+    }
     stages {
-        stage('Build icin-user-ui') {
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
+            }
+        }
+        stage('Build - icin-backend-api') {
+            steps {
+            dir('icin-backend-api/icin_bank_final') {
+                 sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Build Docker image - icin-backend-api') {
+            steps {
+             dir('icin-user-ui') {
+                sh './gradlew docker'
+                }
+            }
+        }
+        stage('Push Docker image - icin-backend-api') {
+            environment {
+                DOCKER_HUB_LOGIN = credentials('docker-hub')
+            }
+            steps {
+             dir('icin-user-ui') {
+                sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+                sh './gradlew dockerPush -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR'
+                }
+            }
+        }
+        stage('Deploy to AWS - icin-backend-api') {
+            environment {
+                DOCKER_HUB_LOGIN = credentials('docker-hub')
+            }
+            steps {
+                withAWS(credentials: 'aws-credentials', region: env.AWS_REGION) {
+                 dir('icin-user-ui') {
+                    sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=$SUBNET_ID -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR -Pregion=$AWS_REGION'
+                    }
+                }
+            }
+        }
+        stage('Build - icin-user-ui') {
           steps {
             dir('icin-user-ui') {
             sh 'npm install'
             }
           }
         }
-        stage('Build Docker image') {
+        stage('Build Docker image - icin-user-ui') {
             steps {
               dir('icin-user-ui') {
                 sh './gradlew docker'
                 }
             }
         }
-        stage('Push Docker image') {
+        stage('Push Docker image - icin-user-ui') {
             environment {
                 DOCKER_HUB_LOGIN = credentials('docker-hub')
             }
@@ -31,7 +77,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to AWS') {
+        stage('Deploy to AWS - icin-user-ui') {
             environment {
                 DOCKER_HUB_LOGIN = credentials('docker-hub')
             }
