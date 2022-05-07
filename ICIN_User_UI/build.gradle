@@ -12,9 +12,7 @@ String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'sumeety
 String imageName = "${dockerHubUsernameProperty}/sy-fsd-spring-boot-api:$version"
 
 docker {
-    name imageName
-    files "build/libs/${bootJar.archiveFileName.get()}"
-    buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
+    docker build . -t sumeetyajnik/icin-user-ui
 }
 
 dockerRun {
