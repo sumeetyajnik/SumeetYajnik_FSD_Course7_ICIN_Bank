@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
+    id 'com.palantir.docker' version '0.31.0'
+    id 'com.palantir.docker-run' version '0.31.0'
+    id 'jp.classmethod.aws.reboot.cloudformation' version '0.45'
+}
+
+version = scmVersion.version
+
+String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'sumeetyajnik'
+String imageName = "${dockerHubUsernameProperty}/icin-admin-ui:$version"
+
+docker {
+    name imageName
+}
+
+dockerRun {
+    name project.name
+    image imageName
+    ports '8080:8080'
+    clean true
+}
+
+aws {
+    region = findProperty('region') ?: 'us-east-1'
+}
+
+cloudFormation {
+    stackName "$project.name-stack"
+    stackParams([
+            SubnetID: findProperty('subnetId') ?: '',
+            ServiceName: project.name,
+            ServiceVersion: project.version,
+            DockerHubUsername: dockerHubUsernameProperty
+    ])
+    templateFile project.file("ecs.yml")
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
