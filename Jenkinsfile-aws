@@ -64,7 +64,7 @@ pipeline {
             steps {
              dir('icin-testing/ICIN_test') {
                    sh 'mvn -B -DskipTests clean package'
-                   sh 'mvn test'
+                   sh 'mvn test --port 4200'
                 }
             }
         }
