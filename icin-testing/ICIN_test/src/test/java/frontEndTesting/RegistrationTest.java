@@ -27,13 +27,13 @@ public class RegistrationTest {
 	public void registerUser() throws InterruptedException {
 		
 		//Personal Details
-		driver.findElement(By.cssSelector("input[name='firstName'")).sendKeys("Sumeet");
-		driver.findElement(By.cssSelector("input[name='lastName'")).sendKeys("Yajnik");
+		driver.findElement(By.cssSelector("input[name='firstName'")).sendKeys("Sumeet88");
+		driver.findElement(By.cssSelector("input[name='lastName'")).sendKeys("Yajnik89");
 		driver.findElement(By.id("next")).click();
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/contactDetails");
 		
 		//Contact Details
-		driver.findElement(By.cssSelector("input[name='email'")).sendKeys("sumeetyajnik@gmail.com");
+		driver.findElement(By.cssSelector("input[name='email'")).sendKeys("sumeetyajnik17@gmail.com");
 		driver.findElement(By.cssSelector("input[name='phone'")).sendKeys("9699011837");
 		driver.findElement(By.id("next")).click();
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/kycDetails");

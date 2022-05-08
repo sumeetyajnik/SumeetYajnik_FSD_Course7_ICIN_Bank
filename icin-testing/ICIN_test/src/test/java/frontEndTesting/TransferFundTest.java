@@ -27,6 +27,7 @@ public class TransferFundTest {
 	
 	@Test
 	public void transferFund() throws InterruptedException  {
+		Thread.sleep(2000L);
 		driver.findElement(By.cssSelector("input[name='email'")).sendKeys("sumeetyajnik@gmail.com");
 		driver.findElement(By.cssSelector("input[name='password'")).sendKeys("abc@1234");
 		driver.findElement(By.id("loginButton")).click();
@@ -52,6 +53,7 @@ public class TransferFundTest {
 	
 	@Test
 public void transferFundGreaterThanBalance() throws InterruptedException  {
+		Thread.sleep(2000L);
 		driver.findElement(By.linkText("Transfer")).click();;
 		
 		//Filling Up transfer fund form
@@ -73,6 +75,7 @@ public void transferFundGreaterThanBalance() throws InterruptedException  {
 }
 	@Test
 public void transferFundWithIncorrectAccountNumber() throws InterruptedException  {
+		Thread.sleep(2000L);
 		driver.findElement(By.linkText("Transfer")).click();;
 		
 		//Filling Up transfer fund form

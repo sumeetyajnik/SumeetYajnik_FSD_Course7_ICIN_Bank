@@ -43,6 +43,10 @@ public class DepositFundTest {
 	}
 	@Test
 	public  void depositFundInSavingAccount() throws InterruptedException {
+		driver.get("http://localhost:4200/login");
+		driver.findElement(By.cssSelector("input[name='email'")).sendKeys("sumeetyajnik@gmail.com");
+		driver.findElement(By.cssSelector("input[name='password'")).sendKeys("abc@1234");
+		driver.findElement(By.id("loginButton")).click();
 	
 		driver.findElement(By.id("depositFundSection")).click();
 		Select accounts = new Select(driver.findElement(By.id("accountType")));

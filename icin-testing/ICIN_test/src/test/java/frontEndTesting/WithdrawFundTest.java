@@ -36,7 +36,7 @@ public class WithdrawFundTest {
 		driver.findElement(By.id("amountToWithdrawn")).sendKeys("100");
 		
 		driver.findElement(By.id("withdrawMoneyButton")).click();
-		Thread.sleep(1000L);
+		Thread.sleep(3000L);
 		Alert alert = driver.switchTo().alert();
 		String message = alert.getText();
 		assertEquals(message, "Money Withdrawn successfully!!");
@@ -51,7 +51,7 @@ public class WithdrawFundTest {
 		driver.findElement(By.id("amountToWithdrawn")).sendKeys("100");
 		
 		driver.findElement(By.id("withdrawMoneyButton")).click();
-		Thread.sleep(1000L);
+		Thread.sleep(3000L);
 		Alert alert = driver.switchTo().alert();
 		String message = alert.getText();
 		assertEquals(message, "Money Withdrawn successfully!!");
