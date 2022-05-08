@@ -57,7 +57,7 @@ pipeline {
           steps {
             dir('icin-user-ui') {
             sh 'npm install'
-            sh 'npm np build'
+            sh 'npm ng build'
             }
           }
         }
@@ -102,7 +102,7 @@ pipeline {
           steps {
             dir('icin-admin-ui/AdminPortal') {
             sh 'npm install'
-            sh 'npm np build'
+            sh 'npm ng build'
             }
           }
         }
