@@ -12,16 +12,16 @@ Resources:
   Cluster:
     Type: AWS::ECS::Cluster
     Properties:
-      ClusterName: deployment-example-clusterAdm
+      ClusterName: deployment-example-clusterAdminUI
   ServiceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: ServiceSecurityGroupAdmUI
+      GroupName: ServiceSecurityGroupAdminUI
       GroupDescription: Security group for service
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 4200
-          ToPort: 4200
+          FromPort: 8080
+          ToPort: 8080
           CidrIp: 0.0.0.0/0
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
@@ -34,7 +34,7 @@ Resources:
         - Name: !Sub ${ServiceName}-container
           Image: !Sub ${DockerHubUsername}/${ServiceName}:${ServiceVersion}
           PortMappings:
-            - ContainerPort: 4200
+            - ContainerPort: 8080
       RequiresCompatibilities:
         - EC2
         - FARGATE

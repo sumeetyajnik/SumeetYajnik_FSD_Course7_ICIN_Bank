@@ -15,7 +15,7 @@ public class RegistrationTest {
 	WebDriver driver;
 	@BeforeTest
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromeDriver\\chromeDriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/Users/sumeety/Downloads/chromedriver");
 		driver =  new ChromeDriver(); 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	    driver.manage().window().maximize();
@@ -54,7 +54,7 @@ public class RegistrationTest {
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/userRegistration");
 		
 		//User Registration
-		driver.findElement(By.cssSelector("input[name='userName'")).sendKeys("meetshah133");
+		driver.findElement(By.cssSelector("input[name='userName'")).sendKeys("sumeetyajnik");
 		driver.findElement(By.cssSelector("input[name='password'")).sendKeys("abc@1234");
 		driver.findElement(By.cssSelector("input[name='confirm_password'")).sendKeys("abc@1234");
 		driver.findElement(By.cssSelector("input[name='tnc'")).click();
@@ -97,7 +97,7 @@ public class RegistrationTest {
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/userRegistration");
 		
 		//User Registration
-		driver.findElement(By.cssSelector("input[name='userName'")).sendKeys("meetshah133");
+		driver.findElement(By.cssSelector("input[name='userName'")).sendKeys("sumeetyajnik");
 		driver.findElement(By.cssSelector("input[name='password'")).sendKeys("abc@1234");
 		driver.findElement(By.cssSelector("input[name='confirm_password'")).sendKeys("abc@1234");
 		driver.findElement(By.cssSelector("input[name='tnc'")).click();

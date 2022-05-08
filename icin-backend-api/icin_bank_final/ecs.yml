@@ -12,11 +12,11 @@ Resources:
   Cluster:
     Type: AWS::ECS::Cluster
     Properties:
-      ClusterName: deployment-example-cluster
+      ClusterName: deployment-example-clusterBackendApi
   ServiceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: ServiceSecurityGroup
+      GroupName: ServiceSecurityGroupBackendApi
       GroupDescription: Security group for service
       SecurityGroupIngress:
         - IpProtocol: tcp

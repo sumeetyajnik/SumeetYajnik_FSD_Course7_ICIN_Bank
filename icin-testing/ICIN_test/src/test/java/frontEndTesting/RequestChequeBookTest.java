@@ -16,7 +16,7 @@ public class RequestChequeBookTest {
 	WebDriver driver;
 	@BeforeTest
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromeDriver\\chromeDriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/Users/sumeety/Downloads/chromedriver");
 		driver =  new ChromeDriver(); 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	    driver.manage().window().maximize();
@@ -25,7 +25,7 @@ public class RequestChequeBookTest {
 	
 	@Test
 	public  void requestChequeBook() throws InterruptedException {
-		driver.findElement(By.cssSelector("input[name='email']")).sendKeys("meetshah133@gmail.com");
+		driver.findElement(By.cssSelector("input[name='email']")).sendKeys("sumeetyajnik@gmail.com");
 		driver.findElement(By.cssSelector("input[name='password']")).sendKeys("abc@1234");
 		driver.findElement(By.id("loginButton")).click();
 		driver.findElement(By.id("chequebookRequestLink")).click();
