@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,13 +27,13 @@ public class RegistrationTest {
 	public void registerUser() throws InterruptedException {
 		
 		//Personal Details
-		driver.findElement(By.cssSelector("input[name='firstName'")).sendKeys("Meet");
-		driver.findElement(By.cssSelector("input[name='lastName'")).sendKeys("Shah");
+		driver.findElement(By.cssSelector("input[name='firstName'")).sendKeys("Sumeet");
+		driver.findElement(By.cssSelector("input[name='lastName'")).sendKeys("Yajnik");
 		driver.findElement(By.id("next")).click();
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/contactDetails");
 		
 		//Contact Details
-		driver.findElement(By.cssSelector("input[name='email'")).sendKeys("test123@gmail.com");
+		driver.findElement(By.cssSelector("input[name='email'")).sendKeys("sumeetyajnik@gmail.com");
 		driver.findElement(By.cssSelector("input[name='phone'")).sendKeys("9699011837");
 		driver.findElement(By.id("next")).click();
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/kycDetails");
@@ -61,13 +62,11 @@ public class RegistrationTest {
 		driver.findElement(By.cssSelector("button[id='signUpButton'")).click();
 		Thread.sleep(2000L);
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/login");
-		
-
+	
 	}
 	
 	@Test
 	public void registerUser2() throws InterruptedException {
-		
 		driver.get("http://localhost:4200/register");
 		driver.findElement(By.cssSelector("input[name='firstName'")).sendKeys("Rahul");
 		driver.findElement(By.cssSelector("input[name='lastName'")).sendKeys("Jain");
@@ -97,7 +96,7 @@ public class RegistrationTest {
 		assertEquals(driver.getCurrentUrl(), "http://localhost:4200/register/userRegistration");
 		
 		//User Registration
-		driver.findElement(By.cssSelector("input[name='userName'")).sendKeys("sumeetyajnik");
+		driver.findElement(By.cssSelector("input[name='userName'")).sendKeys("rahuljain");
 		driver.findElement(By.cssSelector("input[name='password'")).sendKeys("abc@1234");
 		driver.findElement(By.cssSelector("input[name='confirm_password'")).sendKeys("abc@1234");
 		driver.findElement(By.cssSelector("input[name='tnc'")).click();
