@@ -61,6 +61,13 @@ pipeline {
             }
           }
         }
+        stage('Test - icin-bank') {
+            steps {
+             dir('/icin-testing/ICIN_test') {
+                   sh 'mvn test'
+                }
+            }
+        }
         stage('Build Docker image - icin-user-ui') {
             steps {
               dir('icin-user-ui') {
