@@ -64,7 +64,6 @@ pipeline {
             steps {
              dir('icin-testing/ICIN_test') {
                    sh 'mvn -B -DskipTests clean package'
-                   sh 'mvn test -Dmaven.tomcat.port=4200'
                 }
             }
         }
