@@ -30,7 +30,7 @@ cloudFormation {
     stackName "icin-admin-ui-stack"
     stackParams([
             SubnetID: findProperty('subnetId') ?: '',
-            ServiceName: project.name,
+            ServiceName: 'icin-admin-ui',
             ServiceVersion: project.version,
             DockerHubUsername: dockerHubUsernameProperty
     ])
